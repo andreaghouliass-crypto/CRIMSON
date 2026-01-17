@@ -1,22 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <title>Uma pergunta especial 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 25px;
+      text-align: centre;
+      box-shadow: 0 0 25px rgba(0,0,0,0.25);
+      animation: aparecer 1.5s;
+      max-width: 90%;
+      z-index: 2;
+    }
+
+    h1 {
+      color: #ff4d6d;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin: 10px 0;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 15px;
+    }
+
+    #sim {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #nao {
+      background: #ccc;
+      position: absolute;
+      z-index: 3;
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: scale(0.7); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .coracao {
+      position: fixed;
+      top: -20px;
+      font-size: 24px;
+      animation: cair linear forwards;
+    }
+
+    @keyframes cair {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
 <body>
 
-<script>
-  // 🔒 PASSWORD (executa imediatamente)
-  const passwordCorreta = "amor123";
-  const tentativa = prompt("💖 Escreve a palavra secreta 💖");
-
-  if (tentativa !== passwordCorreta) {
-    document.write(`
-      <body style="margin:0;display:flex;justify-content:center;align-items:center;height:100vh;
-      background:linear-gradient(135deg,#ff9a9e,#fad0c4);font-family:Arial;">
-        <h1>❌ Acesso negado</h1>
-      </body>
-    `);
-    throw new Error("Acesso negado");
-  }
-</script>
-
-<!-- 🎵 Música -->
+<!-- 🎵 Música (YouTube oficial) -->
 <iframe width="0" height="0"
   src="https://www.youtube.com/embed/gGdGFtwCNBE?autoplay=1&loop=1&playlist=gGdGFtwCNBE"
   frameborder="0"
@@ -34,6 +97,12 @@
 <button id="nao">NÃO 😅</button>
 
 <script>
+  // 🔒 SENHA
+  const senha = prompt("amor123");
+  if (senha !== "amor123") {
+    document.body.innerHTML = "<h1 style='color:white'>Who the fuck are you ❌</h1>";
+  }
+
   // 😏 BOTÃO QUE FOGE
   const botaoNao = document.getElementById("nao");
   botaoNao.addEventListener("mouseover", () => {
@@ -44,14 +113,14 @@
   // 💖 RESPOSTA SIM
   function respostaSim() {
     document.getElementById("conteudo").innerHTML = `
-      <h1>😍 EU SABIA 😍</h1>
+      <h1>😍 IHIHIHI 😍</h1>
       <h2>Agora és oficialmente o meu Valentine 💖</h2>
-      <h3>Amo-te muito 🥰</h3>
+      <h3>Amo-te MUIIIITOO MEU AMOOR 🥰</h3>
     `;
     chuvaDeCoracoes();
   }
 
-  // ✨ CORAÇÕES
+  // ✨ Chuva de corações
   function chuvaDeCoracoes() {
     setInterval(() => {
       const c = document.createElement("div");
@@ -60,9 +129,11 @@
       c.style.left = Math.random() * 100 + "vw";
       c.style.animationDuration = (Math.random() * 3 + 2) + "s";
       document.body.appendChild(c);
+
       setTimeout(() => c.remove(), 5000);
     }, 300);
   }
 </script>
 
 </body>
+</html>
