@@ -2,7 +2,7 @@
 <html lang="pt-PT">
 <head>
   <meta charset="UTF-8">
-  <title>Uma pergunta especial 💖</title>
+  <title>Para ti 💖</title>
 
   <style>
     body {
@@ -12,28 +12,26 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       overflow: hidden;
     }
 
     .container {
       background: white;
-      padding: 30px 40px;
-      border-radius: 25px;
-      text-align: centre;
-      box-shadow: 0 0 25px rgba(0,0,0,0.25);
-      animation: aparecer 1.5s;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      animation: fadeIn 2s;
       max-width: 90%;
-      z-index: 2;
     }
 
     h1 {
       color: #ff4d6d;
-      margin-bottom: 10px;
     }
 
     h2 {
-      margin: 10px 0;
+      margin-top: 10px;
     }
 
     button {
@@ -53,22 +51,21 @@
     #nao {
       background: #ccc;
       position: absolute;
-      z-index: 3;
     }
 
-    @keyframes aparecer {
-      from { opacity: 0; transform: scale(0.7); }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
       to { opacity: 1; transform: scale(1); }
     }
 
-    .coracao {
+    .hearts {
       position: fixed;
-      top: -20px;
+      top: -10px;
       font-size: 24px;
-      animation: cair linear forwards;
+      animation: fall 5s linear infinite;
     }
 
-    @keyframes cair {
+    @keyframes fall {
       to {
         transform: translateY(110vh);
         opacity: 0;
@@ -79,58 +76,61 @@
 
 <body>
 
-<!-- 🎵 Música (YouTube oficial) -->
+<!-- MÚSICA DE FUNDO – vídeo do YouTube -->
 <iframe width="0" height="0"
   src="https://www.youtube.com/embed/gGdGFtwCNBE?autoplay=1&loop=1&playlist=gGdGFtwCNBE"
   frameborder="0"
-  allow="autoplay; encrypted-media">
+  allow="autoplay; encrypted-media"
+  allowfullscreen>
 </iframe>
 
-<div class="container" id="conteudo">
+<div class="container">
   <h1>💌 Olá meu amor 💌</h1>
   <h2>Tenho uma pergunta muito importante...</h2>
   <h2>Queres ser o meu Valentine? 💖</h2>
 
-  <button id="sim" onclick="respostaSim()">SIM 💕</button>
+  <button id="sim" onclick="aceitou()">SIM 💕</button>
 </div>
 
 <button id="nao">NÃO 😅</button>
 
 <script>
   // 🔒 SENHA
-  const senha = prompt("amor123");
+  const senha = prompt("💖 Escreve a palavra secreta 💖");
   if (senha !== "amor123") {
-    document.body.innerHTML = "<h1 style='color:white'>Who the fuck are you ❌</h1>";
+    document.body.innerHTML = "<h1 style='color:white'>Acesso negado ❌</h1>";
   }
 
   // 😏 BOTÃO QUE FOGE
-  const botaoNao = document.getElementById("nao");
-  botaoNao.addEventListener("mouseover", () => {
-    botaoNao.style.left = Math.random() * (window.innerWidth - 120) + "px";
-    botaoNao.style.top = Math.random() * (window.innerHeight - 60) + "px";
+  const nao = document.getElementById("nao");
+  nao.addEventListener("mouseover", () => {
+    nao.style.left = Math.random() * (window.innerWidth - 100) + "px";
+    nao.style.top = Math.random() * (window.innerHeight - 50) + "px";
   });
 
-  // 💖 RESPOSTA SIM
-  function respostaSim() {
-    document.getElementById("conteudo").innerHTML = `
-      <h1>😍 IHIHIHI 😍</h1>
-      <h2>Agora és oficialmente o meu Valentine 💖</h2>
-      <h3>Amo-te MUIIIITOO MEU AMOOR 🥰</h3>
+  // 💕 ACEITOU
+  function aceitou() {
+    document.body.innerHTML = `
+      <div class="container">
+        <h1>😍 EU SABIA 😍</h1>
+        <h2>És oficialmente o meu Valentine 💖</h2>
+        <h3>Amo-te de verdade 🥰</h3>
+      </div>
     `;
     chuvaDeCoracoes();
   }
 
-  // ✨ Chuva de corações
+  // ✨ CORAÇÕES CAINDO
   function chuvaDeCoracoes() {
     setInterval(() => {
-      const c = document.createElement("div");
-      c.className = "coracao";
-      c.innerText = "💖";
-      c.style.left = Math.random() * 100 + "vw";
-      c.style.animationDuration = (Math.random() * 3 + 2) + "s";
-      document.body.appendChild(c);
+      const heart = document.createElement("div");
+      heart.classList.add("hearts");
+      heart.innerText = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      document.body.appendChild(heart);
 
-      setTimeout(() => c.remove(), 5000);
+      setTimeout(() => heart.remove(), 5000);
     }, 300);
   }
 </script>
